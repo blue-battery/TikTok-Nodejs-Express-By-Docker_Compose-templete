@@ -1,8 +1,12 @@
-# Basic skeleton with Express app generator
+# TikTok-Nodejs-Express-By-Docker_Compose
+# 用 Express 生成器做一个基础框架
 
-Generate and run a basic [Express](http://expressjs.com/) app. This step should be considered as starting point and is not (yet) suited for "real" development because there's not automatic restart on file changes. We'll get there in the following steps.
+学习Nodejs 第一步，
+一键生成一个Hello World 网站，动起手来吧
 
-## Prerequisites
+## 准备
+
+安装基础环境
 
 Install [Docker](https://www.docker.com/) on your system.
 
@@ -15,15 +19,17 @@ Install [Docker Compose](http://docs.docker.com/compose/) on your system.
 * Python/pip: `sudo pip install -U docker-compose`
 * Other: ``curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose; chmod +x /usr/local/bin/docker-compose``
 
-## Setup
+## 创建网站
 
-1. Run `docker-compose build`. It will pull a base image from the Docker registry and install [express-generator](https://github.com/expressjs/generator) globally in your container. The rest can be ignored for now.
+启动只需一步 
+1. cd到docker-compose.yml文件所在目录 执行
+`docker-compose --b -d`. 
 
-2. Run `docker-compose run web express app`. This will bootstrap a new Express app in your container in the `app` subfolder. Since it already exists, Express will ask you if you want to override, which you can answer with `yes`.
+## 本地验证
+浏览器访问`http://localhost:3000/`
 
-3. Run `docker-compose build` again. It will install install all dependencies from the (generated) package.json, expose port 3000 to the host, and instruct the container to execute `node app/bin/www` on start up.
-
-## Start
-
-Run `docker-compose up` to create and start the container. The app should then be running on your docker daemon on port 3030 (On OS X you can use `boot2docker ip` to find out the IP address).
-# TikTok-Nodejs-Express-By-Docker_Compose
+有问题请私信我：
+抖音号:
+![avatar](./抖音QR.jpeg)
+微信交流群：
+![avatar](./微信群—抖音攻城师.png)
