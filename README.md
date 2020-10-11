@@ -31,8 +31,10 @@ Install [Docker Compose](http://docs.docker.com/compose/) on your system.
 有问题请私信我：</br>
 抖音号:</br>
 
+<img src="https://github.com/blue-battery/TikTok-Nodejs-Express-By-Docker_Compose/blob/main/%E6%8A%96%E9%9F%B3QR.jpeg" width = "300" height = "300" alt="" align=center />
 
-<img src="https://github.com/blue-battery/TikTok-Nodejs-Express-By-Docker_Compose/blob/main/%E5%BE%AE%E4%BF%A1%E7%BE%A4%E2%80%94%E6%8A%96%E9%9F%B3%E6%94%BB%E5%9F%8E%E5%B8%88.png" width = "200" height = "300" alt="" align=center />
 微信交流群：</br>
 
-![avatar](./微信群—抖音攻城师.png)
+<img src="https://github.com/blue-battery/TikTok-Nodejs-Express-By-Docker_Compose/blob/main/%E5%BE%AE%E4%BF%A1%E7%BE%A4%E2%80%94%E6%8A%96%E9%9F%B3%E6%94%BB%E5%9F%8E%E5%B8%88.png" width = "300" height = "300" alt="" align=center />
+
+
