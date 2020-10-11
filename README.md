@@ -23,7 +23,7 @@ Install [Docker Compose](http://docs.docker.com/compose/) on your system.
 
 启动只需一步 
 1. cd到docker-compose.yml文件所在目录 执行
-`docker-compose --b -d`. 
+`docker-compose --b -d`
 
 ## 本地验证
 浏览器访问`http://localhost:3000/`
