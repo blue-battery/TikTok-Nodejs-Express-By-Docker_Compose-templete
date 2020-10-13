@@ -1,6 +1,21 @@
-web:
-  build: .
-  volumes:
-    - "./app:/src/app"
-  ports:
-    - "3000:3000"
+version: '3'
+services:
+  nodejs-tree:
+    container_name: tree-diagram
+#    build: ./docker/nodejs-tree
+    image: "233825477968.dkr.ecr.ap-northeast-1.amazonaws.com/tree-diagram:0.1-1"
+#    logging:
+#      driver: "awslogs"
+#      options:
+#        awslogs-group: "tree-diagram-logs"
+#        awslogs-region: "ap-northeast-1"
+#        awslogs-stream: tree-diagram
+    ports:
+#      - "80:80"
+      - "443:443"
+#    volumes:
+#      - ./treejs:/opt/kcc/treejs/
+    working_dir: /treejs/
+    privileged: true
+    healthcheck:
+      test: "exit 0"

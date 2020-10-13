@@ -1,40 +1,95 @@
-# TikTok-Nodejs-Express-By-Docker_Compose
-# 用 Express 生成器做一个基础框架
+# PriceGetter-prototype
 
-学习Nodejs 第一步，
-一键生成一个Hello World 网站，动起手来吧
+![logo-wide](logo.jpg)
 
-## 准备
+PD-Core樹形図。<br>
+Nodejsをサーバとして、D3jsで樹形図描画、GoogleのPuppeteerでPDF出力するプロジェクトです。
 
-安装基础环境
+---
 
-Install [Docker](https://www.docker.com/) on your system.
+## Installation
+### インストール
+```
+(Internet)
+$ git clone https://gitlab.develop.kikkoman-sit.com/s-it/tree-diagram.git
 
-* [Install instructions](https://docs.docker.com/installation/mac/) for Mac OS X
-* [Install instructions](https://docs.docker.com/installation/ubuntulinux/) for Ubuntu Linux
-* [Install instructions](https://docs.docker.com/installation/) for other platforms
+(AWS Internal)
+$ git clone http://ip-172-31-41-68.ap-northeast-1.compute.internal/s-it/tree-diagram.git
+$ 
+```
+##開発サーバー側
+```
+develop-1で
 
-Install [Docker Compose](http://docs.docker.com/compose/) on your system.
+権限確認
 
-* Python/pip: `sudo pip install -U docker-compose`
-* Other: ``curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose; chmod +x /usr/local/bin/docker-compose``
+$ groups
+{user} docker
 
-## 创建网站
+$ aws configure
+AWS Access Key ID [None]: AKIATM4IVUVIIJDP7MRW
+AWS Secret Access Key [None]: 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
+Default region name [None]: ap-northeast-1
+Default output format [None]: json
 
-启动只需一步 
-1. cd到docker-compose.yml文件所在目录 执行
-`docker-compose --b -d`
+確認コマンド（エラーにならない）
+$ aws s3 ls
 
-## 本地验证
-浏览器访问`http://localhost:3000/`
+自分の作業用リポジトリ（任意のところ）で、masterをpullし最新版に更新する
+$ git checkout original/master
+$ git pull origin master
 
-有问题请私信我：</br>
-抖音号:</br>
+最新Masterにrebase
+$ git rebase master
 
-<img src="https://github.com/blue-battery/TikTok-Nodejs-Express-By-Docker_Compose/blob/main/%E6%8A%96%E9%9F%B3QR.jpeg" width = "300" height = "400" alt="" align=center />
+Makefileに実行権限をつける
+$ chmod +x Makefile
 
-微信交流群：</br>
+念のため、一回掃除
+$ make clean
+```
+####ビルド
+```
+$ make pub
+```
+####プッシュ
+```
+$ make push
+```
+####掃除
+```
+$ make clean
+```
 
-<img src="https://github.com/blue-battery/TikTok-Nodejs-Express-By-Docker_Compose/blob/main/%E5%BE%AE%E4%BF%A1%E7%BE%A4%E2%80%94%E6%8A%96%E9%9F%B3%E6%94%BB%E5%9F%8E%E5%B8%88.png" width = "300" height = "300" alt="" align=center />
+##本番リリース
+```
+web-public2で作業
+```
+####自分の作業用フォルダ（任意のところ）で、ecr-pull.shを準備
+####実行ファイルに権限追加
+```
+$ chmod +x ecr-pull.sh
+```
+レジストリの最新コンテナをPull(バージョン番号を指定)
+```
+$ ./ecr-pull.sh 0.1 1
+```
+####docker-compose.ymlを準備
+####五行目のバージョン番号を変更
+    image: "233825477968.dkr.ecr.ap-northeast-1.amazonaws.com/pricegetter:1.0-1"
 
+##サービス起動
+```
+$ docker-compose up --d
+```
 
+### コンテナに入る
+``````
+$ docker exec -it <container id> /bin/bash
+``````
+##ssl-key
+```
+openssl genrsa 2048 > private_key.pem
+openssl req -new -key private_key.pem > server.csr
+openssl x509 -days 3650 -req -signkey private_key.pem < server.csr > server.crt
+```
